@@ -1,0 +1,13 @@
+<template>
+  <svg xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M19.071 4.929 4.93 19.07m14.142 0L4.93 4.93"
+      stroke="currentColor"
+      stroke-width="1.5"
+      fill="none"
+      fill-rule="evenodd"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+</template>

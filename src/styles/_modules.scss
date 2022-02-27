@@ -1,0 +1,27 @@
+.button-primary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: $light-color;
+  border-radius: 60px;
+  background-color: $primary-color;
+  padding: 12px 35px;
+  transition: $transition-base;
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+.title {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.message {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}

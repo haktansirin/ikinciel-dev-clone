@@ -1,0 +1,11 @@
+.container {
+  max-width: 1100px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: auto;
+}
+
+.content {
+  padding-top: $gutters;
+  padding-bottom: $gutters;
+}

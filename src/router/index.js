@@ -1,25 +1,52 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHistory } from "vue-router";
+import HomeView from "../views/HomeView.vue";
+import store from "@/store";
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
-    component: HomeView
+    path: "/",
+    name: "Home",
+    component: HomeView,
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
-]
+    path: "/profile",
+    name: "Profile",
+    component: () =>
+      import(/* webpackChunkName: "profile" */ "../views/ProfileView.vue"),
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: () =>
+      import(/* webpackChunkName: "login" */ "../views/LoginView.vue"),
+  },
+  {
+    path: "/new-post",
+    name: "NewPost",
+    component: () =>
+      import(/* webpackChunkName: "newPost" */ "../views/NewPostView.vue"),
+  },
+  {
+    path: "/product/:id/:slug",
+    name: "ProductDetail",
+    component: () =>
+      import(
+        /* webpackChunkName: "productDetail" */ "../views/ProductDetailView.vue"
+      ),
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
-})
+  routes,
+});
 
-export default router
+router.beforeEach((to, from, next) => {
+  const isLoginned = store.getters.isLoginned;
+  const pages = ["Profile", "NewPost"];
+  if (pages.indexOf(to.name) !== -1 && !isLoginned) next({ name: "Login" });
+  if (to.name === "Login" && isLoginned) next({ name: "Home" });
+  else next();
+});
+
+export default router;
