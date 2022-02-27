@@ -1,4 +1,4 @@
-# ikinciel-dev-clone
+# ikinciel.dev Clone
 
 ## Project setup
 
